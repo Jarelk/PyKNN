@@ -31,7 +31,7 @@ def calc_mislabels(n, k, f):
     validation = np.fromfunction(np.vectorize(func), (10000, 1), dtype=int)
     all_false = validation[validation == 0]
     false_ratio = all_false.shape[0] / 10000
-    print(false_ratio)
+    print(f"{all_false.shape[0]} total mislabels. Ratio of false labels: {false_ratio}\n")
 
     # Plot all false labels
     axs[1, 1].set_title("Mislabels", fontstyle='italic')
