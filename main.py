@@ -17,7 +17,7 @@ def test_all():
     global figures
     figures = False
     triangles = [[[3, 3], [7, 3], [5, 7]]]
-    n_1 = [100, 200, 300, 400, 500, 600, 700]
+    n_1 = [100, 200, 300, 400, 500, 600, 700, 800]
     k_1 = [5]
     f_1 = [0.0]
     batch_test(n_1, k_1, f_1, triangles, 1)
@@ -27,12 +27,32 @@ def test_all():
     f_2 = [0.0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3]
     batch_test(n_2, k_2, f_2, triangles, 2)
 
-    triangles = gen_triangles()
+    # triangles = gen_triangles()
+    triangles = gen_triangles_with_interval()
     n_3 = [500]
     k_3 = [5]
     f_3 = [0.0]
     batch_test(n_3, k_3, f_3, triangles, 3)
 
+
+def gen_triangles_with_interval():
+    """Make seven triangles with a perimeter interval of 1.
+
+    Returns:
+        triangles(np.array) a 7x3x2 matrix containing sets of vertices
+
+    """
+    triangles = []
+    triangles.append(center_triangle([[3, 3], [7, 3], [5.55815631, 7]]))  # 13
+    triangles.append(center_triangle([[3, 3], [7, 3], [7.43975018, 7]]))  # 14
+    triangles.append(center_triangle([[3, 3], [7, 3], [8.43684518, 7]]))  # 15
+    triangles.append(center_triangle([[3, 3], [7, 3], [9.24264069, 7]]))  # 16
+    triangles.append(center_triangle([[3, 3], [7, 3], [9.95749911, 7]]))  # 17?
+    triangles.append(center_triangle([[3, 3], [7, 3], [10.61941080, 7]]))  # 18?
+    triangles.append(center_triangle([[3, 3], [7, 3], [11.24700886, 7]]))  # 19 I guess?
+    triangles.append(center_triangle([[3, 3], [7, 3], [11.8507907, 7]]))  # 20??
+
+    return triangles
 
 def gen_triangles():
     """Make the seven triangles for experiment 3.
